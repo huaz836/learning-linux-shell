@@ -1,0 +1,84 @@
+
+echo 'some text' | cat - file.txt
+
+cat -s file
+cat file | tr -s '\n'
+
+
+script -t 2> timing.log -a output.session
+scriptreplay timing.log output.session
+
+
+#T1
+mkfifo scriptfifo
+
+#T2
+cat scriptfifo
+
+#T1
+script -f scriptfifo
+cmd
+.
+.
+
+
+find . -name "*.txt" -print
+find . \( -name "*.txt" -o -iname "*.PDF" \)
+
+find ~/ -path "*xxx"
+find ~/ -regex "..*\(\.py\|\.sh\)$" 
+find ~/ -iregex "..*\(\.py\|\.sh\)$" 
+
+find . ! -name "*.txt"
+
+find . -maxdepth 2 -type f 
+find . -mindepth 2 -type f
+
+find . -type d
+f
+l
+c
+b
+s
+p
+
+find . -type f -atime -7
+find . -type f -atime 7
+find . -type f -atime +7
+-atime
+-mtime
+-ctime
+
+-amin
+-mmin
+-cmin
+
+find . -type f -newer file.txt
+
+find . -type f -size +2k
+find . -type f -size 2k
+find . -type f -size -2k
+b
+c
+w
+k
+M
+G
+
+find . -type f -name "*.swp" -delete
+
+find . -type f -name "*.php" ! -perm 644
+
+find . -type f -user root
+
+
+find . -type f -user root -exec chowm huaz {} \;
+find . -type f -name "*.c" -exec cat {} \;>all_in_one.txt
+find . -type f -mtime +10 -name "*.txt" -exec cp {} ../OLD \;
+
+
+find . \( -name ".git" -prune \) -o \( -type f -print \)
+
+ 
+
+
