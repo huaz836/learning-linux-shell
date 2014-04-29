@@ -169,4 +169,28 @@ echo ${file#.}
 echo ${file##.}
 
 
+rename *.JPG *.jpg
+
+rename 's/ /_/g' *
+
+rename 'y/A-Z/a-z/' *
+rename 'y/a-z/A-Z/' *
+
+find . -type f -name "*.mp3" -exec mv {} ./music \;
+
+
+
+echo -e "12\nhello\n" |./interactive.sh 
+
+echo -e "12\nhello\n" > input.data
+./interactive.sh < input.data
+
+
+
+
+
+
+
+
+
 ```
