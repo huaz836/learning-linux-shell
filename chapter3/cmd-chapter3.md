@@ -2,6 +2,8 @@
     dd if=/dev/zero of=junk.data bs=1M count=1
 
 
+-------------------------------
+
     comm A.txt B.txt
     comm A.txt B.txt -1 -2
     comm A.txt B.txt -2 -3
