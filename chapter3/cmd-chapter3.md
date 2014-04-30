@@ -98,7 +98,47 @@ seq 100 | tail -n +6
 tail -f /var/some.log
 dmesg | tail -f
 
+$PID=$(pidof vim)
+tail -f file --pid $PID
 
+
+ls -d */
+ls -F | grep "/$"
+ls -l | grep "^d"
+find . -maxdepth 1 -type d
+
+
+pushd .
+pushd /var/www
+pushd /usr/src
+
+dirs
+dirs -v
+
+pushd +3
+
+popd 
+popd +3
+
+cd -
+
+
+wc file
+wc -l file
+cat file | wc -l
+wc -w file 
+cat file | wc -w
+wc -c file
+cat file | wc -c
+
+wc -L file
+
+
+tree
+tree . -P "*.sh"
+tree . -I "*.sh"
+tree -h
+tree . -H http://localhost -o tree-out.html
 
 
 
