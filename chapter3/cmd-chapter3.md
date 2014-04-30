@@ -1,148 +1,168 @@
-```shell
 
-dd if=/dev/zero of=junk.data bs=1M count=1
-
-
-comm A.txt B.txt
-comm A.txt B.txt -1 -2
-comm A.txt B.txt -2 -3
-comm A.txt B.txt -1 -3
+    dd if=/dev/zero of=junk.data bs=1M count=1
 
 
-mkdir -p /path/to/create
+    comm A.txt B.txt
+    comm A.txt B.txt -1 -2
+    comm A.txt B.txt -2 -3
+    comm A.txt B.txt -1 -3
 
 
-chmod u=rwx g=rw o=r filename
+-------------------------------
 
-chmod a+x filename 
-chmod a-x filename
-
-
-chattr +i filename
-chattr +a /var/log/somelog.log
-
-lsattr
+    mkdir -p /path/to/create
 
 
-touch filename
-touch -a existfile
-touch -m existfile
-touch -d "Tue Apr 29 15:01:02 CST 2014" existfile
+-------------------------------
+
+    chmod u=rwx g=rw o=r filename
+
+    chmod a+x filename 
+    chmod a-x filename
 
 
-ln -s /var/www ~/web
+    chattr +i filename
+    chattr +a /var/log/somelog.log
 
-ls -l | grep "^l" | awk '{print $9}'
-find . -type l -print
-
-ls -l web | awk '{print $11}'
-readlink web
+    lsattr
 
 
-dd if=/dev/zero of=loopbackfile.img bs=1G count=1
-mkfs.ext4 loopbackfile.img
-file loopbackfile.img
-mkdir /mnt/loopback
-mount -o loop loopbackfile.img /mnt/loopback
+-------------------------------
 
-losetup /dev/loop1 loopbackfile.img
-mount /dev/loop1 /mnt/loopvback
+    touch filename
+    touch -a existfile
+    touch -m existfile
+    touch -d "Tue Apr 29 15:01:02 CST 2014" existfile
 
 
-losetup /dev/loop1 loopbackfile.img
-fdisk /dev/loop1
-losetup -o 32256 /dev/loop2 loopback.img
+-------------------------------
 
-umount /mnt/sda1
-umount /dev/sda1
+    ln -s /var/www ~/web
 
-mkdir /mnt/iso
-mount -o loop linux.iso /mnt/iso
+    ls -l | grep "^l" | awk '{print $9}'
+    find . -type l -print
 
-sync
+    ls -l web | awk '{print $11}'
+    readlink web
 
 
-cat /dev/cdrom > image.iso
-dd if=/dev/cdrom of=image.iso
+-------------------------------
 
-mkisofs -V "Label" -o image.iso source_dir/
+    dd if=/dev/zero of=loopbackfile.img bs=1G count=1
+    mkfs.ext4 loopbackfile.img
+    file loopbackfile.img
+    mkdir /mnt/loopback
+    mount -o loop loopbackfile.img /mnt/loopback
 
-isohybrid image.iso
-dd if=image.iso of=/dev/sdb1
-
-cdrecord -v dev=/dev/cdrom image.iso
-cdrecord -v dev=/dev/cdrom image.iso -speed 8
-
-eject
-eject -t
+    losetup /dev/loop1 loopbackfile.img
+    mount /dev/loop1 /mnt/loopvback
 
 
-diff version1.txt version2.txt
-diff version1.txt version2.txt -u
+    losetup /dev/loop1 loopbackfile.img
+    fdisk /dev/loop1
+    losetup -o 32256 /dev/loop2 loopback.img
 
-diff version1.txt version2.txt -u > version.patch
-patch -p1 version1.txt < version.patch
-patch -p1 -R version1.txt < version.patch
+    umount /mnt/sda1
+    umount /dev/sda1
 
-diff -Naur dir1 dir2
+    mkdir /mnt/iso
+    mount -o loop linux.iso /mnt/iso
 
-
-head file
-cat text | head
-head -n 4 file
-seq 11 | head -n -5
-
-tail -n 5 file
-seq 100 | tail -n +6
-
-tail -f /var/some.log
-dmesg | tail -f
-
-$PID=$(pidof vim)
-tail -f file --pid $PID
+    sync
 
 
-ls -d */
-ls -F | grep "/$"
-ls -l | grep "^d"
-find . -maxdepth 1 -type d
+-------------------------------
+
+    cat /dev/cdrom > image.iso
+    dd if=/dev/cdrom of=image.iso
+
+    mkisofs -V "Label" -o image.iso source_dir/
+
+    isohybrid image.iso
+    dd if=image.iso of=/dev/sdb1
+
+    cdrecord -v dev=/dev/cdrom image.iso
+    cdrecord -v dev=/dev/cdrom image.iso -speed 8
+
+    eject
+    eject -t
 
 
-pushd .
-pushd /var/www
-pushd /usr/src
+-------------------------------
 
-dirs
-dirs -v
+    diff version1.txt version2.txt
+    diff version1.txt version2.txt -u
 
-pushd +3
+    diff version1.txt version2.txt -u > version.patch
+    patch -p1 version1.txt < version.patch
+    patch -p1 -R version1.txt < version.patch
 
-popd 
-popd +3
-
-cd -
+    diff -Naur dir1 dir2
 
 
-wc file
-wc -l file
-cat file | wc -l
-wc -w file 
-cat file | wc -w
-wc -c file
-cat file | wc -c
+-------------------------------
 
-wc -L file
+    head file
+    cat text | head
+    head -n 4 file
+    seq 11 | head -n -5
 
+    tail -n 5 file
+    seq 100 | tail -n +6
 
-tree
-tree . -P "*.sh"
-tree . -I "*.sh"
-tree -h
-tree . -H http://localhost -o tree-out.html
+    tail -f /var/some.log
+    dmesg | tail -f
 
+    $PID=$(pidof vim)
+    tail -f file --pid $PID
 
 
+-------------------------------
+
+    ls -d */
+    ls -F | grep "/$"
+    ls -l | grep "^d"
+    find . -maxdepth 1 -type d
+
+
+-------------------------------
+
+    pushd .
+    pushd /var/www
+    pushd /usr/src
+
+    dirs
+    dirs -v
+
+    pushd +3
+
+    popd 
+    popd +3
+
+    cd -
+
+
+-------------------------------
+
+    wc file
+    wc -l file
+    cat file | wc -l
+    wc -w file 
+    cat file | wc -w
+    wc -c file
+    cat file | wc -c
+
+    wc -L file
+
+-------------------------------
+    tree
+    tree . -P "*.sh"
+    tree . -I "*.sh"
+    tree -h
+    tree . -H http://localhost -o tree-out.html
 
 
 
-```
+
+
+
