@@ -165,8 +165,8 @@ csplit
 file="hack.fun.book.txt"
 echo ${file%.*}
 echo ${file%%.*}
-echo ${file#.}
-echo ${file##.}
+echo ${file#*.}
+echo ${file##*.}
 
 
 rename *.JPG *.jpg
