@@ -80,4 +80,58 @@
 
 -------------------------------
 
+cut -f2,3 filename
+cut -f3 --complement filename
+cut -f2 -d";" filename
+
+cut -c1-5 filename
+cut filename -c1-3,6-9 --output-delimiter ","
+
+
+-------------------------------
+
+sed 's/pattern/repace_string/' file
+sed -i 's/text/replace/' file
+
+sed 's/pattern/repace_string/g' file
+sed 's/pattern/repace_string/2g' file
+
+sed 's:text:replace:g'
+sed 's|text|replace|g'
+
+sed '/^$/d' file
+
+echo this is an example | sed 's/\w\+/[&]/g'
+
+echo this is digit 7 in a number | sed 's/digit \([0-9]\)/\1/'
+
+sed 'expression; expression'
+
+echo hello world | sed "s/$text/HELLO/"
+
+
+-------------------------------
+
+awk 'BEGIN{ start statements } { pattern statements } END { end statements }'
+awk "BEGIN{ start statements } { pattern statements } END { end statements }"
+
+awk 'BEGIN { i=0 } { i++ } END { print i }' filename
+
+echo -e "line1\nline2" | awk 'BEGIN{ print "Start" } { print } END{ print "End" }'
+
+echo | awk '{ var1="v1"; var2="v2"; var3="v3"; print var1;var2;var3; }'
+echo | awk '{ var1="v1"; var2="v2"; var3="v3"; print var1"-"var2"-"var3 }'
+
+
+echo -e "line1 f2 f3\nline2 f4 f5\nline3 f6 f7" | \
+awk '{
+    print "Line no:"NR", No of fields:"NF, "$0="$0, "$1="$1, "$2="$2, "$3="$3
+}'
+
+
+-------------------------------
+
+
+
+
 
